@@ -31,14 +31,12 @@ async function run() {
 
     app.post('/task', async (req, res) => {
       const task = req.body;
-      console.log(task)
       const result = await taskCollection.insertOne(task);
       res.send(result);
     })
 
     app.get('/task/:email', async (req, res) => {
       const email = req.params.email;
-      console.log(email)
       const query = { email: email }
       const result = await taskCollection.find(query).toArray();
       res.send(result);
